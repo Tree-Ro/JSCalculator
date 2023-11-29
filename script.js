@@ -68,7 +68,7 @@ function operate(
             return exponentiation(+opperand1, +opperand2);
 
         default:
-            return 'Math Error';
+            return 'MathError';
     }
 }
 
@@ -112,14 +112,10 @@ function addNumber(newNumber) {
 }
 
 function addOperator(newOperator) {
-    if (!input.operator[0]) {
-        input.operator = [newOperator];
-        displayInput(
-            input.opperand1[0] + ` ${input.operator} ` + input.opperand2[0]
-        );
-    } else {
-        // turn button red for a small time
-    }
+    input.operator = [newOperator];
+    displayInput(
+        input.opperand1[0] + ` ${input.operator} ` + input.opperand2[0]
+    );
 }
 
 function displayOutput(output) {
@@ -129,24 +125,67 @@ function displayOutput(output) {
 function displayInput(input) {
     userInput.textContent = input;
 }
+
 //Buttons
 
 function numberListener() {
     numberButtons.forEach((button) => {
         button.addEventListener('mousedown', (event) => {
             addNumber(event.target.textContent);
+
+            //Animate Shadow
+            button.setAttribute(
+                'style',
+                'box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.4);'
+            );
+            setTimeout(
+                () =>
+                    button.setAttribute(
+                        'style',
+                        'box-shadow: 6px 3px 3px rgba(0, 0, 0, 0.4);'
+                    ),
+                600 * 1
+            );
         });
     });
 }
 
-function operatorListener() {
+function operatorListener(state) {
     exponentiationButton.addEventListener('mousedown', () => {
         addOperator('**');
+
+        //Animate Shadow
+        button.setAttribute(
+            'style',
+            'box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.4);'
+        );
+        setTimeout(
+            () =>
+                button.setAttribute(
+                    'style',
+                    'box-shadow: 6px 3px 3px rgba(0, 0, 0, 0.4);'
+                ),
+            600 * 1
+        );
     });
 
     operatorButtons.forEach((button) => {
         button.addEventListener('mousedown', (event) => {
             addOperator(event.target.textContent);
+
+            //Animate Shadow
+            button.setAttribute(
+                'style',
+                'box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.4);'
+            );
+            setTimeout(
+                () =>
+                    button.setAttribute(
+                        'style',
+                        'box-shadow: 6px 3px 3px rgba(0, 0, 0, 0.4);'
+                    ),
+                600 * 1
+            );
         });
     });
 }
@@ -159,6 +198,20 @@ function removeListener() {
             } else if (event.target.textContent === 'AC') {
                 allClear();
             }
+
+            //Animate Shadow
+            button.setAttribute(
+                'style',
+                'box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.4);'
+            );
+            setTimeout(
+                () =>
+                    button.setAttribute(
+                        'style',
+                        'box-shadow: 6px 3px 3px rgba(0, 0, 0, 0.4);'
+                    ),
+                600 * 1
+            );
         });
     });
 }
@@ -166,5 +219,19 @@ function removeListener() {
 function operateListener() {
     operateButton.addEventListener('click', (event) => {
         displayOutput(operate());
+
+        //Animate Shadow
+        operateButton.setAttribute(
+            'style',
+            'box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.4);'
+        );
+        setTimeout(
+            () =>
+                operateButton.setAttribute(
+                    'style',
+                    'box-shadow: 6px 3px 3px rgba(0, 0, 0, 0.4);'
+                ),
+            600 * 1
+        );
     });
 }
