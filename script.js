@@ -1,6 +1,10 @@
 console.log('hello');
 
-let currentInput = {};
+let input = {
+    opperand1: [''],
+    operator: [''],
+    opperand2: [''],
+};
 const numbers = document.querySelectorAll('#number');
 const operators = document.querySelectorAll('#operator');
 const remove = document.querySelectorAll('#remove');
@@ -27,29 +31,70 @@ function divide(dividend, divisor) {
     return quotient;
 }
 
+function squared(base, exponent) {
+    const square = base ** exponent;
+    return square;
+}
+
 //Functionality
-function operate(operand1, operand2, operator) {
-    switch (operator) {
+function operate(
+    opperand1 = input.opperand1,
+    opperand2 = input.opperand2,
+    operator = input.operator
+) {
+    switch (operator[0]) {
         case '+':
-            add(operand1, operand2);
-            break;
+            return add(+opperand1, +opperand2);
 
         case '-':
-            subtract(operand1, operand2);
-            break;
+            return subtract(+opperand1, +opperand2);
 
         case '*':
-            multiply(operand1, operand2);
-            break;
+            return multiply(+opperand1, +opperand2);
 
         case '/':
-            divide(operand1, operand2);
-            break;
+            return divide(+opperand1, +opperand2);
+
+        case '**':
+            return squared(+opperand1, +opperand2);
+
+        default:
+            return 'Math Error';
     }
 }
 
-function allClear() {}
+function allClear() {
+    input = {
+        opperand1: [''],
+        operator: [''],
+        opperand2: [''],
+    };
+}
 
-function clear() {}
+function clear() {
+    if (!input.operator[0]) {
+        input.opperand1 = [input.opperand1[0].slice(0, -1)];
+    } else if (!input.opperand2) {
+        input.operator = [''];
+    } else if (input.operator) {
+        input.opperand2 = [input.opperand2[0].slice(0, -1)];
+    }
+}
+
+function addNumber(newNumber) {
+    if (!input.operator[0]) {
+        input.opperand1[0] += newNumber;
+    } else if (input.operator[0]) {
+        input.opperand2[0] += newNumber;
+    }
+}
+
+function addOperator(newOperator) {
+    if (!input.operator[0]) {
+        input.operator = [newOperator];
+    } else {
+        // turn button red for a small time
+    }
+}
 
 //Buttons
