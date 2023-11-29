@@ -1,5 +1,10 @@
 console.log('hello');
 
+let currentInput = {};
+const numbers = document.querySelectorAll('#number');
+const operators = document.querySelectorAll('#operator');
+const remove = document.querySelectorAll('#remove');
+const equalSign = document.querySelector('#operate');
 
 //Operations
 function add(addend1, addend2) {
@@ -22,38 +27,29 @@ function divide(dividend, divisor) {
     return quotient;
 }
 
-
 //Functionality
-function operate(operand1, operand2, operator ) {
+function operate(operand1, operand2, operator) {
     switch (operator) {
         case '+':
-            add(operand1, operand2)
+            add(operand1, operand2);
             break;
 
         case '-':
-            subtract(operand1, operand2)
+            subtract(operand1, operand2);
             break;
 
         case '*':
-            multiply(operand1, operand2)
+            multiply(operand1, operand2);
             break;
 
         case '/':
-            divide(operand1, operand2)
+            divide(operand1, operand2);
             break;
     }
 }
 
-function clear() {
-    
-}
+function allClear() {}
 
+function clear() {}
 
 //Buttons
-function () {
-
-}
-
-function () {
-
-}
